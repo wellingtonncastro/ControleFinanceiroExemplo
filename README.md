@@ -10,5 +10,5 @@ Sistema exemplo de  controle financeiro pessoal, feito em asp.net core, utilizan
   <li>Adicionar usuario e senha do seu MySql na "ConnectionStrings"</li>
   <li>Adicionar email e senha no ""ConfiguracaoEmail</li>
 </ul>
-<p><bold>Observação1:</bold> O email que for adicionado, deve estar com permissão para que programas de terceiro possam ter acesso</p>
-<p><bold>Observação2:</bold> o "Endereco" irá mudar dependendo do serviço utilizado, nesse exmplo estamos utilizando o serviço do gmail</p>
+<p><b>Observação1:</b> O email que for adicionado, deve estar com permissão para que programas de terceiro possam ter acesso</p>
+<p><b>Observação2:</b> o "Endereco" irá mudar dependendo do serviço utilizado, nesse exmplo estamos utilizando o serviço do gmail</p>
