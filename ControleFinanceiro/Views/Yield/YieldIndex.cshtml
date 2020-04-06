@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ControleFinanceiro.Models.Receita>
+
+@{
+    ViewData["Title"] = "YieldIndex";
+}
+
+<h1 class="text-center">Minhas Receitas</h1>
+<hr />
+<p>
+    <a  class="btn btn-outline-warning" asp-action="CreateYield">Adicionar Receita</a>
+</p>
+<table class="table">
+    <thead class="bg bg-warning">
+        <tr>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Valor)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Valor)
+            </td>
+
+            <td>
+                <a asp-action="EditYield" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="DetailsYield" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="DeleteYield" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

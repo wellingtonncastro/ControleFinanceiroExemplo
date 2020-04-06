@@ -1,0 +1,48 @@
+﻿@model ControleFinanceiro.Models.Despesa
+
+@{
+    ViewData["Title"] = "DeleteAnotherExpensed";
+}
+
+<h1 class="text-center">Deletar despesa</h1>
+<h3>Deseja excluir esta despesa?</h3>
+<hr />
+<div>
+    <dl class="row">
+       
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Valor)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CategoriaId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Categoria.NomeCategoria)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TipoId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tipo.Descricao)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+    </dl>
+    
+    <form asp-action="DeleteAnotherExpensed">
+        <input type="submit" value="Delete" class="btn btn-outline-warning" /> 
+    </form>
+</div>

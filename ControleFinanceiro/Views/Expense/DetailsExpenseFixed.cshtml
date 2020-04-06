@@ -1,0 +1,33 @@
+﻿@model ControleFinanceiro.Models.DespesaFixa
+
+@{
+    ViewData["Title"] = "DetailsExpenseFixed";
+}
+
+<h1 class="text-center">Detalhes da minha despesa fixa</h1>
+
+<hr />
+<div>
+    <dl class="row">
+        
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Valor)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CategoriaId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Categoria.NomeCategoria)
+        </dd>
+      
+    </dl>
+</div>

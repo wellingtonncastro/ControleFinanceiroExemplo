@@ -1,0 +1,46 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+    <ul class="navbar-nav">
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="IndexTotalMonthly" asp-route-id="@UserManager.GetUserId(User)">Home</a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Controle das Finanças
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                    <a class="dropdown-item" asp-controller="Yield" asp-action="YieldIndex" asp-route-id="@UserManager.GetUserId(User)">Receitas</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" asp-controller="Expense" asp-action="ExpenseFixedIndex" asp-route-id="@UserManager.GetUserId(User)">Despesas fixas</a>
+                    <a class="dropdown-item" asp-controller="AnothersExpense" asp-action="VariableExpenseIndex" asp-route-id="@UserManager.GetUserId(User)">Despesas variávels</a>
+                    <a class="dropdown-item" asp-controller="AnothersExpense" asp-action="ExtraExpenseIndex" asp-route-id="@UserManager.GetUserId(User)">Despesas Extras</a>
+
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-controller="Users" asp-action="Configuration">Bem-vindo @User.Identity.Name!</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="text-warning navbar" asp-controller="Users" asp-action="LogOut">Logout</a>
+            </li>
+
+        }
+        else
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-action="Login" asp-controller="Users">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-warning" asp-action="Create" asp-controller="Users">Registrar-se</a>
+            </li>
+
+        }
+    </ul>

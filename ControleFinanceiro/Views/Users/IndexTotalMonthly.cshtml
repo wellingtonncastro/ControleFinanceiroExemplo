@@ -1,0 +1,103 @@
+﻿@model ControleFinanceiro.Models.ViewModels.TotalMonthlyFormViewModel
+
+@{
+    ViewData["Title"] = "IndexTotalMonthly";
+}
+
+    
+    <div class="">
+        <h1 class="text-center">Meu saldo atual:  </h1>
+        @if (Model.Saldo < 0)
+        {
+            <h1 class="text-danger pl-3 text-center">
+                @Html.DisplayFor(model => model.Saldo)
+            </h1>
+        }
+        else
+        {
+            <h1 class="pl-3 text-center">
+                @Html.DisplayFor(model => model.Saldo)
+            </h1>
+
+        }
+    </div>
+    
+    <hr />
+    <div class="row">
+        <h2>
+            @Html.DisplayNameFor(model => model.TotalReceita)
+        </h2>
+        <h2 class="pl-3">
+            @Html.DisplayFor(model => model.TotalReceita)
+        </h2>
+
+    </div>
+   
+    <hr />
+    <div class="row">
+        <h3 class="mr-3">Minhas Despesas</h3>
+        <a class="text-warning pt-2" asp-action="DownloadPdfGeneral">Baixar PDF geral</a>
+    </div>
+    <dl class="row">
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.TotalDespesaFixa)
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.TotalDespesaFixa)
+        </dd>
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.TotalDespesaVariavel)
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.TotalDespesaVariavel)
+        </dd>
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.TotalDespesaExtra)
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.TotalDespesaExtra)
+        </dd>
+        <dt class="col-sm-6 mt-3">
+            @Html.DisplayNameFor(model => model.TotalDespesa)
+        </dt>
+        @if (Model.TotalDespesa > Model.TotalReceita)
+        {
+            <dd class="col-sm-6 mt-3 text-danger">
+                @Html.DisplayFor(model => model.TotalDespesa)
+            </dd>
+        }
+        else 
+        {
+            <dd class="col-sm-6 mt-3 ">
+                @Html.DisplayFor(model => model.TotalDespesa)
+            </dd>
+        }
+
+    </dl>
+    <hr />
+
+    <h3 class="mb-5">Recomendações</h3>
+    <dl class="row">
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.ValorGuardar)
+        </dt>
+
+        @if (Model.ValorGuardar > Model.Saldo)
+        {
+            <dd class="col-sm-6 text-warning">
+                @Html.DisplayFor(model => model.ValorGuardar)
+            </dd>
+        }
+        else
+        {
+            <dd class="col-sm-6">
+                @Html.DisplayFor(model => model.ValorGuardar)
+            </dd>
+        }
+        <dt class="col-sm-6">
+            @Html.DisplayNameFor(model => model.MembroDaFamilia)
+        </dt>
+        <dd class="col-sm-6">
+            @Html.DisplayFor(model => model.MembroDaFamilia)
+        </dd>
+    </dl>

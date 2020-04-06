@@ -1,0 +1,39 @@
+﻿@model ControleFinanceiro.Models.DespesaFixa
+
+@{
+    ViewData["Title"] = "DeleteExpensedFixed";
+}
+
+<h1 class="text-center mb-2">Deletar despesa fixa</h1>
+
+<h3>Deseja excluir essa despesa fixa?</h3>
+
+<div>
+    <hr />
+    <dl class="row">
+        
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Valor)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CategoriaId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Categoria.NomeCategoria)
+        </dd>
+        
+    </dl>
+    
+    <form asp-action="DeleteExpensedFixed">
+        <input type="submit" value="Delete" class="btn btn-outline-warning" />
+    </form>
+</div>

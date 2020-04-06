@@ -1,0 +1,18 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+@{
+    ViewData["Title"] = "Configuration";
+}
+
+<h1 class="text-center">Configurações</h1>
+
+<section class="container">
+    <ul>
+        <li> <a asp-action="EditNumberMemberFamily" asp-route-id="@UserManager.GetUserId(User)"> <hr /> Mudar quantidade de membros da familia </a> <hr />  </li>
+
+        <li> <a asp-action="ChangePassword" asp-route-id="@UserManager.GetUserId(User)"> Mudar Senha de acesso</a> <hr /> </li>
+    </ul>
+
+</section>
+

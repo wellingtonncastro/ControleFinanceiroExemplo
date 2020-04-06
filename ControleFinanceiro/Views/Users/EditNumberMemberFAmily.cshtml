@@ -1,0 +1,29 @@
+﻿@model ControleFinanceiro.Models.User
+@{
+    ViewData["Title"] = "EditNumberMemberFAmily";
+}
+
+<h1 class="text-center">Editar quantidade de membro da familia</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="EditNumberMemberFamily">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="QuantidadeMembroFamilia" class="control-label"></label>
+                <input asp-for="QuantidadeMembroFamilia" class="form-control" />
+                <span asp-validation-for="QuantidadeMembroFamilia" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-outline-warning" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

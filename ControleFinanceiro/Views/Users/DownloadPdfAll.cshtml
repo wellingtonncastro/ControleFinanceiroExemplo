@@ -1,0 +1,158 @@
+﻿@model ControleFinanceiro.Models.ViewModels.DetailsAllExpenseAndYield
+
+@{
+    Layout = null;
+    var yield = Model.Receitas.Sum(x => x.Valor);
+    var expenseFixed = Model.TotalPorCategoriaFixa.Sum(x => x.Total);
+    var expenseVariable = Model.TotalPorCategoriaVariavel.Sum(x => x.Total);
+    var exenseExtra = Model.TotalPorCategoriaExtra.Sum(x => x.Total);
+    var total = yield - (expenseFixed + expenseVariable + exenseExtra);
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <title>DownloadPdfExpenseFixed</title>
+</head>
+
+<body>
+    <h1 class="text-center">Controle Financeiro</h1>
+    <h2>Saldo: @total.ToString("N2")</h2>
+    <hr />
+    <h3>Receita</h3>
+    <h4>Total da receita: @Model.Receitas.Sum(x => x.Valor).ToString("N2")</h4>
+    <table class="table">
+        <thead class="bg bg-warning">
+            <tr>
+                <th>
+                    Descrição
+                </th>
+                <th>
+                    Valor
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Receitas)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descricao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Valor)
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+
+    <h3>Despesas Fixas</h3>
+    <h4>Total das despesas: @Model.TotalPorCategoriaFixa.Sum(x => x.Total).ToString("N2")</h4>
+    <table class="table">
+        <thead class="bg bg-warning">
+            <tr>
+                <th>
+                    Categoria
+                </th>
+                <th>
+                    Valor
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.TotalPorCategoriaFixa)
+            {
+                @if (item.Total > 0)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Categorias.NomeCategoria)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Total)
+                        </td>
+
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+
+    <h3>Despesas Variáveis</h3>
+    <h4>Total das despesas: @Model.TotalPorCategoriaVariavel.Sum(x => x.Total).ToString("N2")</h4>
+    <table class="table">
+        <thead class="bg bg-warning">
+            <tr>
+                <th>
+                    Categoria
+                </th>
+                <th>
+                    Valor
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.TotalPorCategoriaVariavel)
+            {
+                @if (item.Total > 0)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Categorias.NomeCategoria)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Total)
+                        </td>
+
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+
+
+    <h3>Despesas Extras</h3>
+    <h4>Total das despesas: @Model.TotalPorCategoriaExtra.Sum(x => x.Total).ToString("N2")</h4>
+    <table class="table">
+        <thead class="bg bg-warning">
+            <tr>
+                <th>
+                    Categoria
+                </th>
+                <th>
+                    Valor
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.TotalPorCategoriaExtra)
+            {
+                @if (item.Total > 0)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Categorias.NomeCategoria)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Total)
+                        </td>
+
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</body>
+</html>
+

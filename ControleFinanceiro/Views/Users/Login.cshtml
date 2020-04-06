@@ -1,0 +1,39 @@
+﻿@model ControleFinanceiro.Models.ViewModels.User.LoginFormViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+    <section class="container">
+
+        <h1>Login</h1>
+        <hr />
+
+        <div class="row">
+            <div class="col-md-12 ">
+                <form asp-action="Login">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" id="Email" class="form-control Email" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <span><a asp-action="ForgotPassword">Esqueci minha senha!</a></span>
+
+                    <div class="form-group float-right">
+                        <input type="submit" value="Entrar" class="btn btn-outline-warning" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </section>
+

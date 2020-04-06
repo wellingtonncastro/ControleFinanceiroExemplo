@@ -1,0 +1,74 @@
+﻿@model ControleFinanceiro.Models.ViewModels.Expense.DetailsExpenseFixedFormViewModel
+
+@{
+    ViewData["Title"] = "ExpenseFixedIndex";
+
+}
+
+<h1 class="text-center">Minhas Despesas Fixas</h1>
+<div class="row">
+    <a class="btn btn-outline-warning mr-3" asp-action="CreateExpenseFixed">Adicionar Despesa</a>
+    
+    <a class="btn btn-outline-warning" asp-action="DownloadPdfExpenseFixed" >Baixar PDF</a>
+    
+</div>
+<hr />
+
+<div>
+    <h3 class="mb-5">Total por categoria</h3>
+    <dl class="row">
+        @foreach (var item in Model.TotalPorCategoria)
+        {
+            if (item.Total > 0)
+            {
+                <dt class="col-sm-2">@Html.DisplayFor(modelItem => item.Categorias.NomeCategoria)</dt>
+                <dd class="col-sm-1">@Html.DisplayFor(modelItem => item.Total)</dd>
+
+            }
+
+        }
+    </dl>
+</div>
+<hr />
+<table class="table">
+    <thead class="bg bg-warning">
+        <tr>
+            <th>
+                Categoria
+            </th>
+            <th>
+                Descrição
+            </th>
+            <th>
+                Valor
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.DespesaFixa)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categoria.NomeCategoria)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Valor)
+                </td>
+
+
+
+                <td>
+                    <a class="text-decoration-none " asp-action="EditExpenseFixed" asp-route-id="@item.Id">Edit </a> |
+                    <a class="text-decoration-none " asp-action="DetailsExpenseFixed" asp-route-id="@item.Id">Details </a>  |
+                    <a class="text-decoration-none " asp-action="DeleteExpensedFixed" asp-route-id="@item.Id">Delete </a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

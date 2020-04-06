@@ -1,0 +1,72 @@
+﻿@model ControleFinanceiro.Models.ViewModels.AnothersExpenses.DetailsAnothersExpenseFormViewModel
+
+@{
+    ViewData["Title"] = "ExtraExpenseIndex";
+}
+
+<h1 class="text-center">Minhas Despesas Extras</h1>
+
+<div class="row ">
+    
+    <a class="btn btn-outline-warning mr-3" asp-action="CreateExtraExpense">Adicionar Despesa Extra</a>
+    
+    <a class="btn btn-outline-warning" asp-action="DownloadPdfExpenseFixed" asp-route-id="3" >Baixar PDF</a>
+    
+</div>
+
+<hr />
+<div>
+    <h3 class="mb-5">Total por categoria</h3>
+    <dl class="row">
+        @foreach (var item in Model.TotalPorCategoria)
+        {
+            if (item.Total > 0)
+            {
+                <dt class="col-sm-2">@Html.DisplayFor(modelItem => item.Categorias.NomeCategoria)</dt>
+                <dd class="col-sm-1">@Html.DisplayFor(modelItem => item.Total)</dd>
+
+            }
+        }
+    </dl>
+</div>
+<hr />
+<table class="table">
+    <thead class="bg bg-warning">
+        <tr>
+            <th>
+                Categoria
+            </th>
+
+            <th>
+                Descrição
+            </th>
+            <th>
+                Valor   
+            </th>
+            <th></th>
+
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Despesas) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categoria.NomeCategoria)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Valor)
+            </td>
+
+            <td>
+                <a class="text-decoration-none " asp-action="EditAnotherExpense" asp-route-id="@item.Id">Edit </a>  |
+                <a class="text-decoration-none " asp-action="DetailsAnotherExpense" asp-route-id="@item.Id">Details </a>  |
+                <a class="text-decoration-none " asp-action="DeleteAnotherExpensed" asp-route-id="@item.Id">Delete </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
